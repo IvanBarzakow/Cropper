@@ -1,3 +1,7 @@
 README.md
 .idea
 .idea/vcs.xml
+
+styles/*.css
+styles/*.map
+node_modules
