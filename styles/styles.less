@@ -1,4 +1,55 @@
 @nice-red: #f36c79;
 @nice-blue: #4585f3;
 
+html { min-height: 100%; font-family: 'Consolas'; cursor: url('../cursor.png'),auto; }
 body { background-color: azure; color: @nice-red; }
+
+
+/* GLOBALS */
+* { box-sizing: border-box; }
+.clear { clear: both; }
+.bordRad {
+	border-radius: 3px;
+}
+/* GLOBALS */
+nav {
+	width: 100%;
+	.holder {
+		padding: 4px;
+		margin-bottom: 4px;
+		background-color: rgba(255,255,255,0.4);
+		color: rgba(0,0,0,0.4);
+	@extend .bordRad;
+	}
+}
+.drawing-container {
+	width: 600px;
+	margin: 0 auto;
+	#canvas{ border: 1px solid #fff; }
+}
+.drag-resize-drop {
+	max-width: 1600px;
+	margin: 0 auto;
+	#diff { width: 100%; background-color: gray; padding: 10px; float: right; }
+	#droparea {
+		width: 40%; min-height: 150px; background-color: lightgray; border: 1px dashed darkslategray; margin-right: 1%; float: right;
+		&:hover {
+			cursor: move;
+		}
+	}
+	#dropareaB { width: 40%; min-height: 150px; background-color: lightgray; border: 1px dashed darkslategray; margin-right: 1%; float: right; }
+
+}
+
+a {
+	background-color: rgba(255,255,255,0.4);
+	color: white;
+	text-shadow: 0px 0px 3px #1d1d1d;
+	text-decoration: none;
+	padding: 0px 3px;
+@extend .bordRad;
+	&:hover { cursor: url('../unnamed-file.png'),auto; }
+}
+.inner{
+	margin: 10% 10px;
+}

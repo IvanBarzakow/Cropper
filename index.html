@@ -2,17 +2,48 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
             
         <title>Page Title</title>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.js"
+                integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+                crossorigin="anonymous"></script>
         
         <link rel="stylesheet/less" href="styles/styles.less">
 
         <script src="scripts/less.js"></script>
     </head>
-    
-    <body>
-    
-    red
-    blu
+
+    <body id="body">
+    <nav>
+        <div class="holder">
+            <a href="javascript:;" onclick="new App().setNav()">+add</a>
+            <a href="javascript:;" id="nameSetter">set-name</a>
+            <div class="names"></div>
+        </div>
+    </nav>
+    <template>
+        <tr>
+            <td class="record"></td>
+            <td></td>
+        </tr>
+    </template>
+    <div class="drawing-container">
+        <a href="javascript:;" onclick="new App().clearDrawing()">Clear drawing</a>
+        <a href="javascript:;" onclick="new App().draw()">Draw</a>
+        <canvas width="600" height="200" id="canvas"></canvas>
+    </div>
+    <div class="drag-resize-drop">
+        <div id="droparea" ondragover="dragOver(event)" ondrop="drop(event)">
+            <div draggable="true" ondragstart="drag(event)" id="diff">ABOVE<div class="inner">INNER</div>BOTTOM</div>
+        </div>
+        <div id="dropareaB" ondragover="dragOver(event)" ondrop="drop(event)"></div>
+        <div class="clear"></div>
+    </div>
+
+    <div id="clock"></div>
+    <script src="scripts/classNav.js"></script>
     </body>
 </html>
