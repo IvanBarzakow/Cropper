@@ -48,11 +48,11 @@ App = function(){
 			var acanvas = document.getElementById('canvas');
 			canvas4Ctx = acanvas.getContext('2d');
 			gr = canvas4Ctx.createLinearGradient(0,0,acanvas.width,acanvas.height);
-			gr.addColorStop(0,"#64e4bb");
-			gr.addColorStop(1,"#4992bd");
+			gr.addColorStop(0,"rgb(" + _RGB._BLUE +","+ _RGB._RED +","+ _RGB._GREEN + ")");
+			gr.addColorStop(1,"rgb(" + _RGB._GREEN +","+ _RGB._RED +","+ _RGB._BLUE + ")");
 			canvas4Ctx.strokeStyle = gr;
-			canvas4Ctx.lineWidth = 10;
-			canvas4Ctx.strokeRect((pointOfTouch.offsetX),(pointOfTouch.offsetY),10,10);
+			canvas4Ctx.lineWidth = 1;
+			canvas4Ctx.strokeRect((pointOfTouch.offsetX),(pointOfTouch.offsetY),1,1);
 		},
 		draw	:function(){
 			canvas = document.getElementById('canvas');
