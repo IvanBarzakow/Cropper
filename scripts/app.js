@@ -23,6 +23,4 @@ var Vues = new Vue({
         "live_clock_timestamp":"0",
         "live_game_period":"''"
     },
-    template:
-        ,
 });
