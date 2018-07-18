@@ -12,37 +12,64 @@
                 crossorigin="anonymous"></script>
         
         <link rel="stylesheet/less" href="styles/styles.less">
+        <link rel="stylesheet" href="styles/bootstrap.css">
 
         <script src="scripts/less.js"></script>
     </head>
 
     <body id="body">
-    <nav>
-        <div class="holder">
-            <a href="javascript:;" onclick="new App().setNav()">+add</a>
-            <a href="javascript:;" id="nameSetter">set-name</a>
-            <span id="" class="obj">
-                {{home_team}}
-            </span>
-            <div class="names"></div>
+        <nav>
+            <div class="holder">
+                <a class="btn btn-primary" data-toggle="collapse" href="#paintExample" role="button" aria-expanded="false" aria-controls="collapseExample">paint</a>
+                <a class="btn btn-danger" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">drag/drop</a>
+                <a class="btn btn-light" data-toggle="collapse" href="#dataExample" role="button" aria-expanded="false" aria-controls="collapseExample">data</a>
+                <a href="javascript:;" onclick="new App().setNav()" id="adder">+add</a>
+                <a href="javascript:;" id="nameSetter">set-name</a>
+                <div class="names"></div>
+            </div>
+        </nav>
+<!--drawing -->
+        <div class="drawing-container collapse" id="paintExample">
+            <a href="javascript:;" onclick="new App().clearDrawing()">Clear drawing</a>
+            <a href="javascript:;" onclick="new App().draw()">Draw</a>
+            <canvas width="600" height="200" id="canvas"></canvas>
         </div>
-    </nav>
-    <div class="drawing-container">
-        <a href="javascript:;" onclick="new App().clearDrawing()">Clear drawing</a>
-        <a href="javascript:;" onclick="new App().draw()">Draw</a>
-        <canvas width="600" height="200" id="canvas"></canvas>
-    </div>
-    <div class="drag-resize-drop">
-        <div id="droparea" ondragover="dragOver(event)" ondrop="drop(event)">
-            <div draggable="true" ondragstart="drag(event)" id="diff">ABOVE<div class="inner">INNER</div>BOTTOM</div>
+<!--end drawing -->
+<!--drag/drop -->
+        <div class="drag-resize-drop collapse" id="collapseExample">
+            <div id="droparea" ondragover="dragOver(event)" ondrop="drop(event)">
+                <div draggable="true" ondragstart="drag(event)" id="diff">ABOVE<div class="inner">INNER</div>BOTTOM</div>
+            </div>
+            <div id="dropareaB" ondragover="dragOver(event)" ondrop="drop(event)"></div>
+            <div class="clear"></div>
         </div>
-        <div id="dropareaB" ondragover="dragOver(event)" ondrop="drop(event)"></div>
-        <div class="clear"></div>
-    </div>
-
-    <div id="clock"></div>
-    <script src="scripts/classNav.js"></script>
-    <script src="scripts/vue.js" defer></script>
-    <script src="scripts/app.js" defer></script>
+<!--drag/drop-->
+<!--data handling-->
+        <div class="collapse show obj" id="dataExample">
+            {{home_team}} vs {{away_team}}
+            <ul>
+                <li v-for="(data, index) in big">
+                    {{index}}
+                    <ul>
+                        <li v-for="(list, ind) in data">
+                            {{ind}}
+                            <ul>
+                                <li v-for="(item, i) in list">
+                                    {{i}}
+                                    <pre>{{item}}</pre>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+<!--data handling-->
+        <div id="clock"></div>
+        <script src="scripts/classNav.js"></script>
+        <script src="scripts/vue.js" defer></script>
+        <script src="scripts/app.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="scripts/bootstrap.js" defer></script>
     </body>
 </html>

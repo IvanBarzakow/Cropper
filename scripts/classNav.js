@@ -32,12 +32,13 @@ App = function(){
 	_RGB._GREEN_DIRECTION = true;
 	_RGB._BLUE = Math.floor(Math.random() * 256);
 	_RGB._BLUE_DIRECTION = true;
+	//works on every instance of App e.g. click on btn that calls App method
 	$('nav div.names').append(names[Math.floor(Math.random() * names.length)]);
 	return {
 		setNav : function(){
 			if (navItems.indexOf(navItems[current]) > -1){
 				navEl = navItems[current];
-				$('nav div').append(navEl);
+				$('nav div').not('.names').append(navEl);
 				current++;
 			} else {
 				alert('it\'s over');
@@ -153,6 +154,10 @@ App = function(){
  });
  
  $('#nameSetter').click(function () {
-	app.setName();
+ 	$(this).after('<a>' + $(this).html() + '</a>');
+	//app.setName();
 });
+ $('#adder').click(function () {
+	 app.setNav();
+ })
  
