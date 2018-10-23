@@ -11,7 +11,7 @@
                 integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
                 crossorigin="anonymous"></script>
         
-        <link rel="stylesheet/less" href="styles/styles.less">
+        <link rel="stylesheet/less" href="styles/styles.css">
         <link rel="stylesheet" href="styles/bootstrap.css">
 
         <script src="scripts/less.js"></script>
@@ -45,24 +45,27 @@
         </div>
 <!--drag/drop-->
 <!--data handling-->
-        <div class="collapse show obj" id="dataExample">
-            {{home_team}} vs {{away_team}}
-            <ul>
-                <li v-for="(data, index) in big">
-                    {{index}}
-                    <ul>
-                        <li v-for="(list, ind) in data">
-                            {{ind}}
-                            <ul>
-                                <li v-for="(item, i) in list">
-                                    {{i}}
-                                    <pre>{{item}}</pre>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+        <div class="col-md-6
+                    offset-md-3
+                    card collapse show obj" id="dataExample">
+            <div>
+                <div v-for="(sport, index) in big">
+                    {{i18n[sport.info.key]}}
+                    {{sport.info.title}}
+                    <div class="123" v-for="(markets, ind) in sport.data">
+                        {{markets.info.market_title}}
+                        <div v-for="(market, i) in markets.data">
+                            {{market.info.date_title}}
+                            <div v-for="(team, i) in market.data">
+                                <div :class="favorite">
+                                    <span class="home">{{team.info.home_team}}</span> vs <span class="away">{{team.info.away_team}}</span>
+                                </div>
+                                <a v-for="(odd, i) in team.data" class="btn btn-dark" href="javascript:void(0)">{{odd.info.display_odd}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 <!--data handling-->
         <div id="clock"></div>

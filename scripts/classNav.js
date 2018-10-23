@@ -138,9 +138,10 @@ App = function(){
  }
  
  var app = new App;
- app.setBackground();
+ //app.setBackground();
+document.body.style.backgroundImage = "url(http://18bet.local/themes/_default/web/img/bg/soccer.jpg)";
  window.addEventListener('wheel', function(){
-	app.setBackground();
+	//app.setBackground();
  });
  
  $('#canvas').mousedown(function(e){
