@@ -12,14 +12,29 @@ body { background-color: azure; color: @nice-red; }
 	border-radius: 3px;
 }
 /* GLOBALS */
-nav {
-	width: 100%;
-	.holder {
-		&:extend(.bordRad);
-		padding: 4px;
-		margin-bottom: 4px;
-		background-color: rgba(255,255,255,0.4);
-		color: rgba(0,0,0,0.4);
+.holder {
+	min-height: 600px;
+	width: 26px;
+	float: left;
+	margin-bottom: 4px;
+	background-color: rgba(255,255,255,0.4);
+	color: rgba(0,0,0,0.4);
+	border: 1px solid rgba(0,0,0,0.5);
+	padding: 3px 0px;
+	@extend .bordRad;
+
+	.menu-item {
+		height: 20px;
+		line-height: 20px;
+		display: block;
+		background-color: azure;
+		color: gray;
+		text-shadow: none;
+		text-align: center;
+		margin-bottom: 3px;
+		&.selected {
+			background-color: gray;
+		}
 	}
 }
 .drawing-container {

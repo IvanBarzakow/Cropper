@@ -9,6 +9,7 @@ var	App,
 	current = 0,
 	canvas,
 	canvasDomEl = $('#canvas'),
+	navigation = $('.holder'),
 	gr,
 	grd,
 	clock;
@@ -38,8 +39,21 @@ App = function(){
 		prevCanvasVal: 0,
 		drawHandle: $('input[name="draw-handle"]'),
 		init: function(){
+			var self = this;
 			this.draw();
-			//this.setDrawMethod($('input[name="set-draw"]:checked').val())
+			this.initMenu();
+			this.drawHandle.on("input", function(){
+				$('#range-val').css('width', $(this).val() + '%');
+				self.arcDraw($(this).val());
+			});
+		},
+		initMenu: function(){
+			var menuItems = {
+				draw: {"icon":"	icon-pen", "action": "drawPen"},
+			}
+			$.each(menuItems, function(index, value){
+				navigation.append('<a href="' + value.action + '" class="menu-item"><i class="' + value.icon + '"></i></a>');
+			});
 		},
 		setNav : function(){
 			if (navItems.indexOf(navItems[current]) > -1){
@@ -86,8 +100,9 @@ App = function(){
 			var self = this;
 			this.drawHandle.off('input');
 			this.drawHandle.on('input', function(value){
-				self[val](value);
+				self[val]($(this).val());
 			});
+			this.drawHandle.val(0).trigger('input');
 		},
 		arcDraw:function(val){
 			this.canvasCtx.clearRect(0, 0, 600, 600);
@@ -97,10 +112,13 @@ App = function(){
 			this.prevCanvasVal = val;
 		},
 		rectDraw:function(val){
-			this.canvasCtx.clearRect(0, 0, 600, 600);
-			this.canvasCtx.beginPath();
-			this.canvasCtx.arc(200, 200, 100, 0 * Math.PI ,val * Math.PI);
-			this.canvasCtx.stroke();
+			var grd = this.canvasCtx.createRadialGradient(0,0,300, 600,600, 500);
+			grd.addColorStop(0,"#f1fa64");
+			grd.addColorStop(1,"#3cffa3");
+			this.canvasCtx.clearRect(0, 0, 600, 600);			
+			//this.canvasCtx.rect(200, 200, val * 65 ,val * 100);
+			this.canvasCtx.fillStyle = grd;
+			this.canvasCtx.fillRect(200, 200, val * 65 ,val * 100);
 			this.prevCanvasVal = val;
 		},
 		draw	:function(){
@@ -197,7 +215,3 @@ $('#nameSetter').click(function () {
 });
 
 $('#range-val').css('width', $('.range-input').val() + '%');
-
-$('.range-input').on('input',function(){
-	$('#range-val').css('width', $(this).val() + '%');
-});
