@@ -5,26 +5,25 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-    <head>
-        <title>FE Delasport</title>
-        <meta charset="windows-1252">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        
-        <script src="https://code.jquery.com/jquery-3.2.1.js"
-                integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-                crossorigin="anonymous"></script>
+	<head>
+		<title>FE Delasport</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<script src="https://code.jquery.com/jquery-3.2.1.js"
+		        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+		        crossorigin="anonymous"></script>
 		<link rel="stylesheet" type="text/css" href="styles/styles.css">
 		<link rel="stylesheet" type="text/css" href="styles/mfglabs_iconset.css">
-		<link rel="stylesheet" type="text/css" href="stylesheets/mfglabs_iconset.css">
-    </head>
-    <body id="body">
-    	
-			<div class="holder">
-				
-			</div>
-		
-        <!-- <nav>
+	</head>
+	<body id="body">
+
+		<div class="holder">
+
+		</div>
+
+		<!-- <nav>
 			<div class="holder">
 				<a href="javascript:;" onclick="new App().setNav()">+add</a>
 				<a href="javascript:;" id="nameSetter">set-name</a>
@@ -49,15 +48,45 @@ and open the template in the editor.
 			<div id="dropareaB" ondragover="dragOver(event)" ondrop="drop(event)"></div>
 			<div class="clear"></div>
 		</div>
-		
+
 		<div id="clock"></div> -->
 		<div class="drawing-container">
 			<canvas width="600" height="600" id="canvas"></canvas>
 		</div>
 		<input type="radio" name="set-draw" value="arcDraw" oninput="app.setDrawMethod(this.value)" checked="checked">
 		<input type="radio" name="set-draw" value="rectDraw" oninput="app.setDrawMethod(this.value)">
-		<input type="range" min="0" max="2" step="0.01" name="draw-handle" value="0" class="range-input" />
+		<input type="range" min="0" max="2" step="0.01" name="draw-handle" value="0" class="range-input"/>
 		<div style="height:3px; background-color: wheat" id="range-val"></div>
+		<div class="obj">
+			<div class="col-md-6
+                    offset-md-3
+                    card collapse show obj" id="dataExample">
+				<div>
+					<div v-for="(sport, index) in big">
+						{{i18n[sport.info.key]}}
+						{{sport.info.title}}
+						<div class="123" v-for="(markets, ind) in sport.data">
+							{{markets.info.market_title}}
+							<div v-for="(market, i) in markets.data">
+								{{market.info.date_title}}
+								<div v-for="(team, i) in market.data">
+									<div :class="favorite">
+										<span class="home">{{team.info.home_team}}</span> vs <span class="away">{{team.info.away_team}}</span>
+									</div>
+									<a v-for="(odd, i) in team.data" class="btn btn-dark" href="javascript:void(0)">{{odd.info.display_odd}}</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<script src="scripts/classNav.js"></script>
-    </body>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		        crossorigin="anonymous"></script>
+		<script src="scripts/bootstrap.js" defer></script>
+		<script src="scripts/vue.js" defer></script>
+		<script src="scripts/app.js" defer></script>
+	</body>
 </html>
