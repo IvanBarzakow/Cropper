@@ -1,0 +1,64 @@
+/* GLOBALS */
+* { box-sizing: border-box; }
+.bordRad {
+	border-radius: 3px;
+}
+.clear { clear: both; }
+html { min-height: 100%; font-family: 'Consolas'; }
+
+	.holder {
+		min-height: 600px;
+		width: 26px;
+		float: left;
+		margin-bottom: 4px;
+		background-color: rgba(255,255,255,0.4);
+		color: rgba(0,0,0,0.4);
+		border: 1px solid rgba(0,0,0,0.5);
+		padding: 3px 0px;
+		@extend .bordRad;
+
+		.menu-item {
+			height: 20px;
+			line-height: 20px;
+			display: block;
+			background-color: azure;
+			color: gray;
+			text-shadow: none;
+			text-align: center;
+			margin-bottom: 3px;
+			&.selected {
+				background-color: gray;
+			}
+		}
+	}
+
+.drawing-container {
+	width: 600px;
+	margin: 0 auto;
+	#canvas{ border: 1px solid rgba(0,0,0,0.5); }
+}
+.drag-resize-drop {
+	max-width: 1600px;
+	margin: 0 auto;
+	#diff { width: 100%; background-color: gray; padding: 10px; float: right; }
+	#droparea {
+		width: 40%; min-height: 150px; background-color: lightgray; border: 1px dashed darkslategray; margin-right: 1%; float: right;
+		&:hover {
+			cursor: move;
+		}
+	}
+	#dropareaB { width: 40%; min-height: 150px; background-color: lightgray; border: 1px dashed darkslategray; margin-right: 1%; float: right; }
+
+}
+
+a {
+	background-color: rgba(255,255,255,0.4);
+	color: white;
+	text-shadow: 0px 0px 3px #1d1d1d;
+	text-decoration: none;
+	padding: 0px 3px;
+	@extend .bordRad;
+}
+.inner{
+	margin: 10% 10px;
+}
